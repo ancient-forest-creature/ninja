@@ -1,9 +1,9 @@
 class Ninja {
-    constructor(name, health) {
+    constructor(name, health, speed = 3, strength = 3) {
         this.name = name;
         this.health = health;
-        this.speed = 3;
-        this.strength = 3;
+        this.speed = speed
+        this.strength = strength;
 
     }
 
@@ -23,11 +23,27 @@ class Ninja {
 
     drinkSake() {
         this.health += 10;
-        console.log(`${this.name} sips sake and feels refreshed and revived`)
+        console.log(`${this.name} sips sake and feels refreshed and revived`);
         return this;
     }
 }
 
-const Kiku = new Ninja("Kiku", 10)
+class Sensei extends Ninja{
+    constructor(name) {
+        super(name, 200, 10, 10);
+        this.wisdom = 10
+    }
+
+    speakWisdom() {
+        console.log("To see the world as it is, you must make your internal model of the world subordante to reality");
+        return this;
+    }
+}
+
+const Kiku = new Ninja("Kiku", 150);
 
 Kiku.sayName().showStatus().drinkSake().showStatus();
+
+const Nathan = new Sensei("Nathan");
+
+Nathan.sayName().showStatus().speakWisdom().drinkSake().drinkSake().drinkSake().showStatus();
